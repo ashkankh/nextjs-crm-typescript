@@ -8,7 +8,7 @@ export type CustomerForm = {
     address: string;
     postalCode: string;
     date: string;
-    products: string[];
+    products: productsType[];
 }
 
 export type FormProps = {
@@ -16,10 +16,17 @@ export type FormProps = {
     setForm: Dispatch<SetStateAction<CustomerForm>>;
 }
 
+export type productsType = {
+    name: string,
+    price: string,
+    qty: string,
+}
+
 export type FormInputType = {
     name: string;
     label: string;
     type: string;
     value: string;
+
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
