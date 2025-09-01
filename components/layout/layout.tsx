@@ -1,5 +1,5 @@
 import React from 'react'
-import { LayoutProps } from '@/types/layout.style'
+import { LayoutProps } from '@/types/layout.type'
 import Link from 'next/link'
 import { AtSymbolIcon, UserPlusIcon } from '@heroicons/react/24/outline'
 
