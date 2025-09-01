@@ -9,13 +9,13 @@ function Layout({ children }: LayoutProps) {
             <header>
                 <div className='flex flex-row justify-around items-center bg-slate-900  w-full h-14'>
                     <h1 className='flex text-2xl text-green-400'>NextJS CRM</h1>
-                    <div className='flex flex-row gap-2 justify-center items-center text-black bg-green-300 px-3 py-1 rounded-md hover:cursor-pointer '>
+                    <Link href="/add-customer" className='flex flex-row gap-2 justify-center items-center text-black bg-green-300 px-3 py-1 rounded-md hover:cursor-pointer '>
                         <UserPlusIcon className='w-5' color='#2f2f2' />
-                        <h2 className=''><Link href={"/"}></Link> Add Customer</h2>
-                    </div>
+                        <h2 className=''> Add Customer</h2>
+                    </Link>
                 </div>
-            </header>
-            
+            </header >
+
             <main className="flex-grow flex bg-gray-700 text-white">
                 <div className="max-w-7xl w-full mx-auto p-4">
                     {children}
@@ -35,7 +35,7 @@ function Layout({ children }: LayoutProps) {
                     </div>
                 </div>
             </footer>
-        </div>
+        </div >
     )
 }
 
