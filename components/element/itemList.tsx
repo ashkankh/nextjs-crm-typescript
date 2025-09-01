@@ -9,7 +9,6 @@ type ChangeHandlerType = {
 
 type deleteHandlerType = {
     index: number
-
 }
 
 function ItemList({ form, setForm }: FormProps) {
@@ -24,7 +23,6 @@ function ItemList({ form, setForm }: FormProps) {
     }
 
     const deleteHandler = (index: Number) => {
-        console.log(index)
         const newProducts: any = [...products];
         newProducts.splice(index, 1)
         setForm({ ...form, products: newProducts })
@@ -35,7 +33,6 @@ function ItemList({ form, setForm }: FormProps) {
             ...form,
             products: [...products, { name: "", price: "", qty: "" }]
         })
-        console.log(products)
     }
 
     return (
