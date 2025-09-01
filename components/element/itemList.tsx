@@ -28,7 +28,7 @@ function ItemList({ form, setForm }: FormProps) {
                 {products.map((product) => (
                     <div className='p-4 px-8 flex flex-col border-1 border-gray-300 bg-gray-950 rounded-lg my-2'>
                         <div className='w-full'><FormInput label='Product Name' name='name' onChange={changeHandler} type='text' value={product.name} />
-                            <div className='flex flex-row justify-between'>
+                            <div className='flex flex-row justify-between gap-1'>
                                 <FormInput label='Product price' name='price' onChange={changeHandler} type='text' value={product.price} />
                                 <FormInput label='Product quantity' name='qty' onChange={changeHandler} type='number' value={product.qty} />
                             </div>
