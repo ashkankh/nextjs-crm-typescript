@@ -1,16 +1,37 @@
 import React, { useState } from 'react'
 import Form from '../modules/form'
 import { CustomerForm } from '@/types/form.type'
+import { useRouter } from 'next/router';
 
 function AddCustomerPage() {
 
-    function saveHandler() {
-        //   TODO  
+    const router = useRouter()
+
+
+    async function saveHandler() {
+        const res = await fetch("/api/customer", {
+            method: "POST",
+            body: JSON.stringify({ data: form }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json()
+        console.log(data)
+        data.status === "success" && router.push("/")
+
     }
 
     function cancelHandler() {
-        //   TODO  
-
+        setForm({
+            name: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            address: "",
+            postalCode: "",
+            date: "",
+            products: [],
+        })
+        router.push("/")
     }
 
     const [form, setForm] = useState<CustomerForm>({
