@@ -21,8 +21,8 @@ function Customer({ customer, customersData, setCustomersData }: CustomerProps) 
         <div className='flex flex-col py-1 px-1 bg-gray-800 text-md my-2 rounded-lg'>
             <div className='flex flex-col md:flex-row justify-between items-center'>
                 <div className='flex flex-col md:flex-row gap-4 px-2 py-2 text-sky-200 justify-left md:text-left text-center'>
-                    <div className='flex felx-row w-fit md:w-47 overflow-x-auto  whitespace-nowrap'>{customer.name} {customer.lastName}</div>
-                    <div >{customer.email}</div>
+                    <div className='flex felx-row w-fit md:w-62 overflow-x-auto  whitespace-nowrap'>{customer.name} {customer.lastName}</div>
+                    <div>{customer.email}</div>
                 </div>
                 <div className='flex flex-row gap-1' >
                     <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-red-500 rounded-sm hover:cursor-pointer' onClick={deleteHandler}>Delete</button>
