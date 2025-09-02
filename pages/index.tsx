@@ -1,3 +1,4 @@
+import HomePage from "@/components/templates/homePage";
 import Customer from "@/models/customer";
 import { CustomerForm } from "@/types/form.type";
 import connectDB from "@/utils/connectDB"
@@ -7,7 +8,7 @@ function Index(customers: CustomerForm[]) {
   console.log(customers)
   return (
     <>
-      <h1 className="flex justify-center">CRM Project | NextjS + Tailwind + TypeScript</h1>
+      <HomePage />
     </>
   )
 }
