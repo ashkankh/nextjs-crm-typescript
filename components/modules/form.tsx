@@ -4,13 +4,6 @@ import FormInput from '../element/formInput'
 import ItemList from '../element/itemList'
 
 
-
-// export type CustomerForm = {
-//     date: string;
-//     products: productsType[];
-// }
-
-
 function Form({ form, setForm }: FormProps) {
 
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
