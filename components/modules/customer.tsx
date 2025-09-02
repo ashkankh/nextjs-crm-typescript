@@ -1,9 +1,22 @@
-import { CustomerType } from '@/types/customer.type'
+import { CustomerProps, CustomerType } from '@/types/customer.type'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 import React from 'react'
 
 
-function Customer({ customer }: { customer: CustomerType }) {
+function Customer({ customer, customersData, setCustomersData }: CustomerProps) {
+    const deleteHandler = async () => {
+        const res = await fetch(`/api/customer/${customer._id}`, {
+            method: "DELETE",
+        });
+        const data = await res.json();
+        if (data.status === "success") {
+            console.log("hereeee")
+            console.log(data.id)
+            setCustomersData(prev => prev.filter(c => c._id !== data.id));
+        }
+    }
+
     return (
         <div className='flex flex-col py-1 px-1 bg-gray-800 text-md my-2 rounded-lg'>
             <div className='flex flex-col md:flex-row justify-between items-center'>
@@ -12,7 +25,7 @@ function Customer({ customer }: { customer: CustomerType }) {
                     <div >{customer.email}</div>
                 </div>
                 <div className='flex flex-row gap-1' >
-                    <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-red-500 rounded-sm hover:cursor-pointer'>Delete</button>
+                    <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-red-500 rounded-sm hover:cursor-pointer' onClick={deleteHandler}>Delete</button>
                     <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-green-500 rounded-sm hover:cursor-pointer'><Link href={`/edit/${customer._id}`}>Edit</Link></button>
                     <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-gray-200 rounded-sm hover:cursor-pointer'><Link href={`/customer/${customer._id}`}>Details</Link></button>
                 </div>

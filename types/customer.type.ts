@@ -1,3 +1,4 @@
+import React, { Dispatch, SetStateAction } from "react";
 import { productsType } from "./form.type";
 
 export type CustomerType = {
@@ -12,4 +13,10 @@ export type CustomerType = {
     products: productsType[];
     createdAt: string;
     updateAt: string;
+}
+
+export type CustomerProps = {
+    customer: CustomerType,
+    customersData: CustomerType[],
+    setCustomersData: Dispatch<SetStateAction<CustomerType[]>>
 }
