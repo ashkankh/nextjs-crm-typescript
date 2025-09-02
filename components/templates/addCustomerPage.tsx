@@ -7,19 +7,6 @@ function AddCustomerPage() {
 
     const router = useRouter()
 
-
-    async function saveHandler() {
-        const res = await fetch("/api/customer", {
-            method: "POST",
-            body: JSON.stringify({ data: form }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json()
-        console.log(data)
-        data.status === "success" && router.push("/")
-
-    }
-
     function cancelHandler() {
         setForm({
             name: "",
@@ -44,6 +31,18 @@ function AddCustomerPage() {
         date: "",
         products: [],
     })
+
+    async function saveHandler() {
+        const res = await fetch("/api/customer", {
+            method: "POST",
+            body: JSON.stringify({ data: form }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json()
+        console.log(data)
+        data.status === "success" && router.push("/")
+
+    }
 
     return (
         <>
