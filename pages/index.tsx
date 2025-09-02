@@ -1,18 +1,23 @@
 import HomePage from "@/components/templates/homePage";
 import Customer from "@/models/customer";
-import { CustomerForm } from "@/types/form.type";
 import connectDB from "@/utils/connectDB"
 import { notFound } from "next/navigation"
+import { CustomerType } from "@/types/customer.type";
 
-function Index(customers: CustomerForm[]) {
+type Props = {
+  customers: CustomerType[]
+}
+
+function Index({ customers }: Props) {
   console.log(customers)
   return (
     <>
-      <HomePage />
+      <HomePage customers={customers} />
     </>
   )
 }
 
+export default Index
 
 export async function getServerSideProps() {
   try {
@@ -30,4 +35,3 @@ export async function getServerSideProps() {
   }
 }
 
-export default Index

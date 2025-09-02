@@ -1,9 +1,17 @@
-import React from 'react'
 
-function HomePage() {
+import { CustomerType } from '@/types/customer.type'
+import React from 'react'
+import Customer from '../modules/customer'
+
+
+
+function HomePage({ customers }: { customers: CustomerType[] }) {
     return (
         <>
-            <h1 className="flex justify-center">CRM Project | NextjS + Tailwind + TypeScript</h1>
+            {customers?.map((customer) => (
+                <Customer customer={customer} key={customer._id} />
+            ))}
+
         </>
     )
 }
