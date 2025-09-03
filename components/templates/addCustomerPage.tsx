@@ -41,7 +41,6 @@ function AddCustomerPage() {
         const data = await res.json()
         console.log(data)
         data.status === "success" && router.push("/")
-
     }
 
     return (

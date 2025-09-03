@@ -20,7 +20,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         } catch (err) {
             res.status(500).json({ status: "failed", message: "Error in deleting Data from DB" })
         }
-    } else {
+
+    } else if (req.method === "GET") {
+        const id = req.query.customerID;
+        if (!id) {
+            return res.status(400).json({ status: "failed", message: "customerID is required" })
+        } try {
+            const customer = await Customer.findById(id)
+            return res.status(200).json({ status: "success", customer });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({ status: "failed", message: "Error in getting Data from DB" })
+        }
+    }
+    else {
         res.status(405).json({ status: "failed", message: "Method not allowed" });
     }
 }
