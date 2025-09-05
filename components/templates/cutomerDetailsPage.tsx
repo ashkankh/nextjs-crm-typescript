@@ -97,7 +97,7 @@ function CustomerDetailsPage() {
             </div >
             <div className='flex flex-row bg-gray-800 justify-around p-4 m-2 gap-6' >
                 <button className='flex felx-row justify-center w-40 text-md py-1 px-2 border-1 text-red-500 rounded-sm hover:cursor-pointer' onClick={deleteHandler} >Delete</button>
-                <Link className='flex felx-row justify-center w-40 text-md py-1 px-2 border-1 text-green-500 rounded-sm hover:cursor-pointer' href={`http://localhost:3000/customer/edit/${customer._id}`}>Edit</Link>
+                <Link className='flex felx-row justify-center w-40 text-md py-1 px-2 border-1 text-green-500 rounded-sm hover:cursor-pointer' href={`/customer/edit/${customer._id}`}>Edit</Link>
             </div >
         </>
 
