@@ -32,6 +32,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             console.log(err)
             res.status(500).json({ status: "failed", message: "Error in getting Data from DB" })
         }
+    } else if (req.method === "PUT") {
+        const id = req.query.customerID;
+        const updateData = req.body;
+        console.log(updateData)
+        if (!id) {
+            return res.status(400).json({ status: "failed", message: "customerID is required" })
+        } try {
+            const updatedCustomer = await Customer.findByIdAndUpdate(
+                id,
+                { $set: req.body },
+                { new: true, runValidators: true }
+            );
+            return res.status(200).json({ status: "success", updatedCustomer });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({ status: "failed", message: "Error in getting Data from DB" })
+        }
     }
     else {
         res.status(405).json({ status: "failed", message: "Method not allowed" });

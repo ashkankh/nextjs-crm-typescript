@@ -8,7 +8,7 @@ function Layout({ children }: LayoutProps) {
         <div className="flex flex-col min-h-screen ">
             <header>
                 <div className='flex flex-row justify-around items-center bg-slate-900  w-full h-14'>
-                    <h1 className='flex text-2xl text-green-400'>NextJS CRM</h1>
+                    <Link className='flex text-2xl text-green-400' href="/">NextJS CRM</Link>
                     <Link href="/add-customer" className='flex flex-row gap-2 justify-center items-center text-black bg-green-300 px-3 py-1 rounded-md hover:cursor-pointer '>
                         <UserPlusIcon className='w-5' color='#2f2f2' />
                         <h2 className=''> Add Customer</h2>

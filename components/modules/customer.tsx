@@ -11,8 +11,6 @@ function Customer({ customer, customersData, setCustomersData }: CustomerProps) 
         });
         const data = await res.json();
         if (data.status === "success") {
-            console.log("hereeee")
-            console.log(data.id)
             setCustomersData(prev => prev.filter(c => c._id !== data.id));
         }
     }
@@ -26,7 +24,7 @@ function Customer({ customer, customersData, setCustomersData }: CustomerProps) 
                 </div>
                 <div className='flex flex-row gap-1' >
                     <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-red-500 rounded-sm hover:cursor-pointer' onClick={deleteHandler}>Delete</button>
-                    <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-green-500 rounded-sm hover:cursor-pointer'><Link href={`/edit/${customer._id}`}>Edit</Link></button>
+                    <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-green-500 rounded-sm hover:cursor-pointer'><Link href={`customer/edit/${customer._id}`}>Edit</Link></button>
                     <button className='flex felx-row justify-center text-sm py-1 px-2 border-1 text-gray-200 rounded-sm hover:cursor-pointer'><Link href={`/customer/${customer._id}`}>Details</Link></button>
                 </div>
             </div>
