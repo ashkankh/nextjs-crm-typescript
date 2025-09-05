@@ -8,7 +8,7 @@ export type CustomerForm = {
     address: string;
     postalCode: string;
     date: string;
-    products: productsType[];
+    products: ProductsType[];
 }
 
 export type FormProps = {
@@ -16,7 +16,7 @@ export type FormProps = {
     setForm: Dispatch<SetStateAction<CustomerForm>>;
 }
 
-export type productsType = {
+export type ProductsType = {
     name: string,
     price: string,
     qty: string,

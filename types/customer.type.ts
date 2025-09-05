@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { productsType } from "./form.type";
+import { ProductsType } from "./form.type";
 
 export type CustomerType = {
     _id: string
@@ -10,7 +10,7 @@ export type CustomerType = {
     address: string;
     postalCode: string;
     date: string;
-    products: productsType[];
+    products: ProductsType[];
     createdAt: string;
     updateAt: string;
 }

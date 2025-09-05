@@ -1,4 +1,4 @@
-import { FormProps } from '@/types/form.type'
+import { FormProps, ProductsType } from '@/types/form.type'
 import React from 'react'
 import FormInput from './formInput'
 
@@ -17,15 +17,15 @@ function ItemList({ form, setForm }: FormProps) {
 
     const changeHandler = ({ e, index }: ChangeHandlerType) => {
         const { name, value } = e.target;
-        const newProducts: any = [...products];
-        newProducts[index][name] = value;
-        setForm({ ...form, products: newProducts })
+        const newProducts: ProductsType[] = [...products];
+        newProducts[index][name as keyof ProductsType] = value;
+        setForm({ ...form, products: newProducts });
     }
 
-    const deleteHandler = (index: Number) => {
-        const newProducts: any = [...products];
-        newProducts.splice(index, 1)
-        setForm({ ...form, products: newProducts })
+    const deleteHandler = (index: number) => {
+        const newProducts: ProductsType[] = [...products];
+        newProducts.splice(index, 1);
+        setForm({ ...form, products: newProducts });
     }
 
     const addHandler = () => {
@@ -40,7 +40,7 @@ function ItemList({ form, setForm }: FormProps) {
             <div className='p-4 border-2 border-gray-400 rounded-2xl bg-gray-900 my-4'>
                 <h1 className='flex justify-center text-xl'>Purchased Products</h1>
                 {products.map((product, index) => (
-                    <div className='p-4 px-8 flex flex-col border-1 border-gray-300 bg-gray-950 rounded-lg my-2'>
+                    <div className='p-4 px-8 flex flex-col border-1 border-gray-300 bg-gray-950 rounded-lg my-2' key={index}>
                         <div className='w-full'><FormInput label='Product Name' name='name' onChange={(e) => changeHandler({ e, index })} type='text' value={product.name} />
                             <div className='flex flex-row justify-between gap-1'>
                                 <FormInput label='Product price' name='price' onChange={(e) => changeHandler({ e, index })} type='text' value={product.price} />
