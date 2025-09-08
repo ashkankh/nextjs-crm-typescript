@@ -82,7 +82,7 @@ function CustomerEditPage() {
   return (
     <>
       <div>Add Customer Page</div>
-      <Form form={form} setForm={setForm} />
+      <Form form={form} setForm={setForm} editable={true} />
       <div className='flex flex-row justify-around'>
         {/* <button className='flex felx-row justify-center py-1 px-4 border-1 font-semibold text-red-500 rounded-sm hover:cursor-pointer' onClick={cancelHandler}>Cancel</button> */}
         <button className='flex felx-row justify-center py-1 px-4 border-1 font-semibold text-green-500 rounded-sm hover:cursor-pointer' onClick={updateHandler}>Update</button>

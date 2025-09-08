@@ -14,6 +14,7 @@ export type CustomerForm = {
 export type FormProps = {
     form: CustomerForm;
     setForm: Dispatch<SetStateAction<CustomerForm>>;
+    editable?: boolean;
 }
 
 export type ProductsType = {
@@ -27,6 +28,8 @@ export type FormInputType = {
     label: string;
     type: string;
     value: string;
+    disabled?:boolean;
+    readonly?:boolean;
 
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

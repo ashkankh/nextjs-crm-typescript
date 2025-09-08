@@ -35,7 +35,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else if (req.method === "PUT") {
         const id = req.query.customerID;
         const updateData = req.body;
-        console.log(updateData)
+        
+        delete updateData.email;
+
         if (!id) {
             return res.status(400).json({ status: "failed", message: "customerID is required" })
         } try {

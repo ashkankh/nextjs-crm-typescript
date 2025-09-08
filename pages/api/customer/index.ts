@@ -16,10 +16,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         if (!data.name || !data.lastName || !data.email) return res.status(400).json({ status: "failed", message: "Invalid Data" })
         try {
+            const existing = await Customer.findOne({ email: data.email });
+            if (existing) {
+                return res.status(400).json({ status: "failed", message: "User already exists" });
+            }
             const customer = await Customer.create(data);
             res.status(201).json({ status: "success", message: "Data Created", data: customer })
-        } catch (err) {
-            console.log(err)
+        } catch (err:any) {
+            if (err.code === 11000) {
+                return res.status(400).json({ status: "failed", message: "Email already exists" });
+            }
             return res.status(500).json({ status: "failed", message: "Error in stroing Data in DB" })
         }
     }
