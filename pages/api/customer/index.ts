@@ -2,6 +2,11 @@ import Customer from "@/models/customer";
 import connectDB from "@/utils/connectDB";
 import { NextApiRequest, NextApiResponse } from "next";
 
+interface MongoError extends Error {
+    code?: number;
+}
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     try {
@@ -22,8 +27,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
             const customer = await Customer.create(data);
             res.status(201).json({ status: "success", message: "Data Created", data: customer })
-        } catch (err:any) {
-            if (err.code === 11000) {
+        } catch (err: unknown) {
+            const error = err as MongoError;
+            if (error.code === 11000) {
                 return res.status(400).json({ status: "failed", message: "Email already exists" });
             }
             return res.status(500).json({ status: "failed", message: "Error in stroing Data in DB" })
